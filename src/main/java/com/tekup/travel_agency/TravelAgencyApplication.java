@@ -19,6 +19,7 @@ public class TravelAgencyApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
+//		Run Code on boot
 		User user = new User();
 		user.setFirstName("John");
 		user.setLastName("Doe");
