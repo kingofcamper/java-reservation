@@ -29,9 +29,6 @@ public class Message {
     @Column(name = "message_text")
     private String messageText;
 
-    @Column
-    private LocalDateTime timestamp;
-
     @Enumerated(EnumType.STRING)
     @Column(name = "read_status")
     private MessageStatus readStatus;
