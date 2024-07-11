@@ -1,10 +1,7 @@
 package com.tekup.travel_agency.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.Date;
 
@@ -14,6 +11,8 @@ import java.util.Date;
 @AllArgsConstructor
 @Entity
 @Table(name = "voyages")
+@Builder
+@Data
 public class Voyage {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
