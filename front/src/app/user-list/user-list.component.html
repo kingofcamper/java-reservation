@@ -1,0 +1,166 @@
+
+<div class="row justify-content-center mt-5 ">
+    <div class="col-9">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h3>User List</h3>
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addUserModal">Add User</button>
+        </div>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of users; let i = index">
+                    <th scope="row">{{ i + 1 }}</th>
+                    <td>{{ user.firstName }}</td>
+                    <td>{{ user.lastName }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>
+                        <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                            (click)="editUser(user)">Edit</button>
+                        <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal" 
+                            (click)="deleteUser(user.id)">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form [formGroup]="editForm" (ngSubmit)="onSubmitUpdate()">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                
+                    <!-- Hidden input for user ID -->
+                    <div class="row d-flex justify-content-center text-left">
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <label for="firstName" class="form-label">First Name
+                                </label>
+                                <input type="text" id="firstName" formControlName="firstName"
+                                    class="form-control form-control-lg" placeholder="firstName">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row d-flex justify-content-center text-left">
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <label for="lastName" class="form-label text-right">Last Name</label>
+                                <input type="text" id="lastName" formControlName="lastName"
+                                    class="form-control form-control-lg" placeholder="lastName">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row d-flex justify-content-center text-left">
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <label for="email" class="form-label">Email
+                                </label>
+                                <input type="text" id="email" formControlName="email"
+                                    class="form-control form-control-lg" placeholder="email">
+                            </div>
+                        </div>
+                    </div>
+
+                
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Save changes</button>
+            </div>
+        </form>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="addUserModal" tabindex="-1" aria-labelledby="addUserModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form [formGroup]="addForm" (ngSubmit)="onSubmitAdd()">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="addUserModalLabel">Modal title</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                
+                    <!-- Hidden input for user ID -->
+                    <div class="row d-flex justify-content-center text-left">
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <label for="firstName" class="form-label">First Name
+                                </label>
+                                <input type="text" id="firstName" formControlName="firstName"
+                                    class="form-control form-control-lg" placeholder="firstName">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row d-flex justify-content-center text-left">
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <label for="lastName" class="form-label text-right">Last Name</label>
+                                <input type="text" id="lastName" formControlName="lastName"
+                                    class="form-control form-control-lg" placeholder="lastName">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row d-flex justify-content-center text-left">
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <label for="email" class="form-label">Email
+                                </label>
+                                <input type="text" id="email" formControlName="email"
+                                    class="form-control form-control-lg" placeholder="email">
+                            </div>
+                        </div>
+                    </div>
+
+                
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Save changes</button>
+            </div>
+        </form>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form [formGroup]="editForm" (ngSubmit)="onSubmitDelete()">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="deleteModalLabel">Deleting</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                    <p>are u deleting this user?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Save changes</button>
+            </div>
+        </form>
+        </div>
+    </div>
+</div>
